@@ -1,0 +1,9 @@
+
+body {
+	background-image: url(../images/background.jpg);
+	background-size: cover;
+	background-position: center;
+	background-color: #231f20;
+	font-family: 'Asap', sans-serif;
+	color: #fff;
+}
