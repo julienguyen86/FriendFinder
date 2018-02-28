@@ -11,7 +11,6 @@ Survey
 ![Giphy](app/public/images/demo.gif)
 
 Display a JSON of all possible friends
-
 ![Giphy](app/public/images/json.gif)
 
 
