@@ -13,7 +13,6 @@ function apiRoutes(app) {
     // A POST routes /api/friends. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
     app.post('/api/friends', function(req, res) {
 
-        // Parse new friend input to get integers (AJAX post seemed to make the numbers strings)
         var newFriend = {
             name: req.body.name,
             photo: req.body.photo,
@@ -26,7 +25,7 @@ function apiRoutes(app) {
         newFriend.scores = scoresArray;
 
 
-        // Cross check the new friend entry with the existing ones
+        // cCheck the new friend entry with the existing ones
         var scoreComparisionArray = [];
         for (var i = 0; i < friendsData.length; i++) {
 
@@ -41,7 +40,7 @@ function apiRoutes(app) {
         }
 
         // Determine the best match using the postion of best match in the friendsData array
-        var bestMatchPosition = 0; // assume its the first person to start
+        var bestMatchPosition = 0;
         for (var i = 1; i < scoreComparisionArray.length; i++) {
 
             // Lower number in comparison difference means better match
@@ -51,15 +50,11 @@ function apiRoutes(app) {
 
         }
 
-        // ***NOTE*** If the 2 friends have the same comparison, then the NEWEST entry in the friendsData array is chosen
+        // The NEWEST entry in the friendsData array is chosen if a match
         var bestFriendMatch = friendsData[bestMatchPosition];
-
-
 
         // Reply with a JSON object of the best match
         res.json(bestFriendMatch);
-
-
 
         // Push the new friend to the friends data array for storage
         friendsData.push(newFriend);
@@ -67,7 +62,6 @@ function apiRoutes(app) {
     });
 
 }
-
 
 // Export for use in main server.js file
 module.exports = apiRoutes;
